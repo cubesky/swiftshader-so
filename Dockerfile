@@ -4,4 +4,4 @@ RUN apt-get update && apt-get install -y git make cmake g++ nodejs glslang-tools
 RUN git clone --depth=1 https://github.com/google/swiftshader.git && cd swiftshader && git submodule update --init && mkdir swbuild && cd swbuild && cmake .. && make -j2
 
 FROM scratch
-COPY --from=build-deps-swiftshader /build/swiftshader/swbuild/Linux /swiftshader
+COPY --from=dev-build /build/swiftshader/swbuild/Linux /swiftshader
